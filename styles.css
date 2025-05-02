@@ -1,0 +1,80 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0fdf4;
+    color: #065f46;
+    margin: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h1, h3 {
+    color: #075e54;
+    margin: 0;
+  }
+  
+  /* Button Styles */
+  button {
+    background-color: #6ee7b7;
+    border: none;
+    padding: 10px 20px;
+    margin: 8px 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #34d399;
+  }
+  
+  /* Section & Layout */
+  section {
+    background-color: #dcfce7;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Definition List */
+  dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+    column-gap: 12px;
+    row-gap: 8px;
+  }
+  
+  dt {
+    font-weight: bold;
+  }
+  
+  /* Canvas Chart */
+  canvas {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 12px;
+    display: block;
+    margin: 0 auto 20px;
+  }
+  
+  /* Image Gallery: responsive, max fit columns to minimize rows */
+  #images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-auto-flow: row dense;
+    gap: 12px;
+    margin-top: 12px;
+    justify-items: center;
+  }
+  
+  /* Scale images down to fit their cell while preserving aspect ratio */
+  #images img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+  
