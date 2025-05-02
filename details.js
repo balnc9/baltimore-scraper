@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ['Word Count', d.wordCount],
         ['Headline Word Count', d.headlineWordCount],
         ['Image Count', d.imageCount],
-        ['Bullet Count', d.bulletCount]
+        ['Header Count', d.headerCount]
       ].forEach(([label, value]) => {
         const dt = document.createElement('dt');
         dt.textContent = label;
@@ -52,25 +52,31 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   
       // Metadata
-      const md = document.getElementById('metadata');
-      const dlMeta = document.createElement('dl');
-      [
-        ['URL', d.url],
-        ['Date Posted', d.datePosted],
-        ['Author', d.author || '—'],
-        ['Keywords', d.keywords.length ? d.keywords.join(', ') : '—']
-      ].forEach(([label, value]) => {
-        const dt = document.createElement('dt');
-        dt.textContent = label;
-        const dd = document.createElement('dd');
-        dd.textContent = value;
-        dlMeta.appendChild(dt);
-        dlMeta.appendChild(dd);
-      });
-      md.appendChild(dlMeta);
+      const metadataSection = document.getElementById('metadata');
+      metadataSection.innerHTML = `
+        <h2>Article Metadata</h2>
+        <p><strong>URL:</strong> ${d.url}</p>
+        <p><strong>Headline:</strong> ${d.headline}</p>
+        <p><strong>Date Posted:</strong> ${d.datePosted}</p>
+      `;
   
       // Article body
-      document.getElementById('article').innerHTML = d.articleHTML;
+      document.getElementById('article').innerHTML = `
+        <div style="
+          padding: 20px;
+          background: #f5f5f5;
+          border-radius: 8px;
+          margin: 20px 0;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+          font-size: 16px;
+          line-height: 1.6;
+          color: #333;
+          white-space: pre-wrap;
+        ">
+          ${d.articleText}
+        </div>
+      `;
     });
   });
-  

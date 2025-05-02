@@ -2,13 +2,39 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Data Visualization</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="chart.min.js"></script>
-  <script src="visualization.js"></script>
+  <title>Article Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      max-width: 800px;
+    }
+    .metric {
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+      background: #f5f5f5;
+    }
+    .metric h2 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    .metric p {
+      margin: 0;
+      color: #666;
+    }
+    .metric .value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2196F3;
+    }
+  </style>
 </head>
 <body>
-  <header><h1>Data Visualization</h1></header>
-  <canvas id="wordChart" width="600" height="300"></canvas>
+  <header>
+    <h1>Article Analysis</h1>
+  </header>
+  <div id="metrics"></div>
+  <script src="visualization.js"></script>
 </body>
 </html>
