@@ -50,8 +50,8 @@
         images: allImages,
         imageCount,
         headerCount,
-        articleText
-      }
+        articleText 
+     }
     });
   })();
   
