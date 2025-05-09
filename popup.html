@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <title>Baltimore Scraper</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+        <div class="container">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                        <span class="theme-toggle-icon">🌙</span>
+                </button>
+
+                <header>
+                        <img src="icons/icon48.png" alt="Logo" class="logo">
+                        <h1>Baltimore Scraper</h1>
+                </header>
+
+                <div class="content">
+                        <div class="status-indicator">
+                                <div class="status-dot"></div>
+                                <span class="status-text">Ready to analyze</span>
+                        </div>
+
+                        <div class="button-group">
+                                <button id="details" class="primary-button">
+                                        <span class="button-icon">📊</span>
+                                        Article Details
+                                </button>
+                                <button id="visualize" class="secondary-button">
+                                        <span class="button-icon">📈</span>
+                                        Data Visualization
+                                </button>
+                                <button id="summarize" class="secondary-button">
+                                        <span class="button-icon">📝</span>
+                                        Summarize Article
+                                </button>
+                        </div>
+
+                        <div id="loading" class="loading-spinner hidden">
+                                <div class="spinner"></div>
+                                <p>Analyzing article...</p>
+                        </div>
+                </div>
+        </div>
+        <script src="popup.js"></script>
+</body>
+
+</html>

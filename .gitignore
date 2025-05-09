@@ -1,0 +1,32 @@
+# Node dependencies (if you ever add a build step)
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE folders
+.vscode/
+.idea/
+*.code-workspace
+
+# Build output (if you ever compile or bundle)
+dist/
+build/
+
+# Coverage reports (if you add tests)
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Misc temp files
+*.tmp
+*.temp

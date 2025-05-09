@@ -1,0 +1,41 @@
+{
+        "manifest_version": 3,
+        "name": "Baltimore Scraper",
+        "version": "1.0",
+        "description": "Analyze and summarize Baltimore Sun articles",
+        "permissions": [
+                "activeTab",
+                "storage",
+                "scripting"
+        ],
+        "host_permissions": [
+                "https://www.thebaltimorebanner.com/*"
+        ],
+        "action": {
+                "default_popup": "popup.html",
+                "default_icon": {
+                        "16": "icons/icon16.png",
+                        "48": "icons/icon48.png",
+                        "128": "icons/icon128.png"
+                }
+        },
+        "icons": {
+                "16": "icons/icon16.png",
+                "48": "icons/icon48.png",
+                "128": "icons/icon128.png"
+        },
+        "web_accessible_resources": [
+                {
+                        "resources": [
+                                "details.html",
+                                "visualization.html",
+                                "summarizer.html",
+                                "styles.css",
+                                "icons/*"
+                        ],
+                        "matches": [
+                                "<all_urls>"
+                        ]
+                }
+        ]
+}

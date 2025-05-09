@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <title>Article Analysis</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+        <div class="container">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                        <span class="theme-toggle-icon">🌙</span>
+                </button>
+
+                <header>
+                        <img src="icons/icon48.png" alt="Logo" class="logo">
+                        <h1>Article Analysis</h1>
+                </header>
+
+                <div id="loading" class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading article data...</p>
+                </div>
+
+                <div id="content">
+                        <div class="charts-container">
+                                <div class="chart-container">
+                                        <div id="wordCountChart"></div>
+                                </div>
+                                <div class="chart-container">
+                                        <div id="metadataChart"></div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <script src="visualization.js"></script>
+</body>
+
+</html>
