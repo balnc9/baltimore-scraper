@@ -31,11 +31,16 @@
                                 "visualization.html",
                                 "summarizer.html",
                                 "styles.css",
-                                "icons/*"
+                                "icons/*",
+                                "chart.min.js",
+                                "apexcharts.min.js"
                         ],
                         "matches": [
                                 "<all_urls>"
                         ]
                 }
-        ]
+        ],
+        "content_security_policy": {
+                "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'self';"
+        }
 }

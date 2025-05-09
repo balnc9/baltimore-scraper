@@ -31,7 +31,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                                 if (chrome.runtime.lastError) {
                                         reject(chrome.runtime.lastError);
                                 } else {
-                                        resolve(result.currentArticle);
+                                        const article = result.currentArticle;
+                                        // Create metadata chart
+                                        createArticleMetadataChart(article);
+                                        resolve(article);
                                 }
                         });
                 });
@@ -49,6 +52,91 @@ document.addEventListener('DOMContentLoaded', async function () {
         try {
                 loadingSpinner.style.display = 'flex';
                 contentDiv.style.display = 'none';
+
+                // Create Article Metadata Chart
+                function createArticleMetadataChart(data) {
+                    // Ensure Chart is available
+                    if (typeof Chart === 'undefined') {
+                        console.error('Chart.js is not loaded');
+                        return;
+                    }
+
+                    const ctx = document.getElementById('articleMetadataChart');
+                    if (!ctx) {
+                        console.error('Chart canvas not found');
+                        return;
+                    }
+
+                    // Prepare chart data
+                    const wordCount = data && data.articleText ? getWordCount(data.articleText) : 0;
+                    const headlineWordCount = data && data.headline ? getWordCount(data.headline) : 0;
+                    const imageCount = data && data.images ? data.images.length : 0;
+
+                    // Create chart
+                    new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: ['Word Count', 'Headline Word Count', 'Image Count'],
+                            datasets: [{
+                                label: 'Article Metadata',
+                                data: [wordCount, headlineWordCount, imageCount],
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.6)',  // Teal for Word Count
+                                    'rgba(255, 99, 132, 0.6)',  // Pink for Headline Word Count
+                                    'rgba(54, 162, 235, 0.6)'   // Blue for Image Count
+                                ],
+                                borderColor: [
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Article Metadata Overview',
+                                    font: {
+                                        size: 18
+                                    }
+                                },
+                                subtitle: {
+                                    display: true,
+                                    text: data.headline || 'No Headline',
+                                    font: {
+                                        size: 14,
+                                        style: 'italic'
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Count'
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Metadata Categories'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Utility function to get word count
+                function getWordCount(text) {
+                    if (!text) return 0;
+                    const words = text.trim().split(/\s+/);
+                    return words.length;
+                }
 
                 const data = await loadArticleData();
 

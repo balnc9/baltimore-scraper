@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 document.getElementById('article-title').textContent = data.headline || 'No title available';
                 document.getElementById('article-author').textContent = findAuthor(data);
                 document.getElementById('article-category').textContent = findCategory(data);
-                document.getElementById('article-date').textContent = data.datePosted || 'Date not available';
+                document.getElementById('article-date').textContent = data.datePublished || 'N/A';
 
                 // Calculate additional metrics
                 const articleText = data.articleText || '';
