@@ -278,12 +278,41 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const imagesContainer = document.getElementById('images');
                 const images = data.images || [];
                 if (images.length > 0) {
+                        // Create overlay for expanded images
+                        const overlay = document.createElement('div');
+                        overlay.className = 'image-overlay';
+                        overlay.innerHTML = `
+                                <div class="overlay-content">
+                                        <img class="overlay-image" src="" alt="Expanded article image">
+                                </div>
+                        `;
+                        document.body.appendChild(overlay);
+
+                        // Add click handlers for overlay
+                        const overlayImg = overlay.querySelector('.overlay-image');
+
+                        overlay.onclick = () => {
+                                overlay.classList.remove('active');
+                                setTimeout(() => {
+                                        overlay.style.display = 'none';
+                                }, 300); // Match this with CSS transition duration
+                        };
+
                         images.forEach(imageUrl => {
                                 if (imageUrl) {
                                         const img = document.createElement('img');
                                         img.src = imageUrl;
                                         img.alt = 'Article image';
                                         img.loading = 'lazy';
+                                        img.className = 'article-image';
+                                        img.onclick = (e) => {
+                                                e.stopPropagation();
+                                                overlayImg.src = imageUrl;
+                                                overlay.style.display = 'flex';
+                                                // Force reflow
+                                                overlay.offsetHeight;
+                                                overlay.classList.add('active');
+                                        };
                                         imagesContainer.appendChild(img);
                                 }
                         });
